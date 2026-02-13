@@ -1,6 +1,6 @@
 # Mapping AI Discourse on Reddit: Embedding, Clustering, and Topic Analysis at Scale
 
-![3D Cluster Animation](assets/cluster_evolution.gif)
+https://github.com/user-attachments/assets/33ac1296-fa5e-412f-992f-6d5387a75628
 
 ## Overview
 
