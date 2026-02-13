@@ -117,6 +117,12 @@ We computed topic centroids (mean Gemma embeddings per topic, L2-normalized) and
 - **Bridge topics reveal shared concerns.** Topics around AI safety, job displacement, and model capabilities appear across technically-focused subreddits, general discussion forums, and domain-specific communities alike.
 - **The two-level modeling approach (cluster + subreddit) captures different aspects of the discourse.** Cluster-level topics reflect broad thematic groupings that cross community boundaries, while subreddit-level topics capture the specific framing and vocabulary each community uses.
 
+**Example: r/aiArt in the 3D Subreddit Similarity Network**
+
+![3D Subreddit Similarity Network showing r/aiArt and its most similar communities](assets/subreddit_similarity_network.png)
+
+*Each node is a subreddit positioned by its UMAP-reduced topic centroid, colored by dominant HDBSCAN cluster. The hover panel shows r/aiArt's topic overlap with its most similar communities.*
+
 ## Tech Stack
 
 | Category | Tools |
@@ -137,7 +143,8 @@ reddit-ai-analysis-showcase/
 ├── README.md
 ├── requirements.txt
 ├── config.template.yaml
-├── assets/                          # Visualizations (GIF added separately)
+├── assets/
+│   └── subreddit_similarity_network.png
 ├── pipeline/                        # Data ingestion and preprocessing
 │   ├── 01_init_database.py          # Initialize DuckDB schema
 │   ├── 02_seed_subreddits.py        # Seed valid subreddit list
