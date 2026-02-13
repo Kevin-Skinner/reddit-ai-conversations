@@ -4,7 +4,7 @@ https://github.com/user-attachments/assets/33ac1296-fa5e-412f-992f-6d5387a75628
 
 ## Overview
 
-We built an end-to-end NLP pipeline to analyze how artificial intelligence is discussed across Reddit communities. Starting from raw [Arctic Shift](https://github.com/ArcticalShift/arctic-shift) data dumps (compressed JSON archives of Reddit posts and comments), we ingested, filtered, embedded, clustered, and topic-modeled **2.4 million documents** spanning 20,000+ subreddits during July 2025.
+We built an end-to-end NLP pipeline to analyze how artificial intelligence is discussed across Reddit communities. Starting from raw [Arctic Shift](https://github.com/ArthurHeitmann/arctic_shift) data dumps (compressed JSON archives of Reddit posts and comments), we ingested, filtered, embedded, clustered, and topic-modeled **2.4 million documents** spanning 20,000+ subreddits during July 2025.
 
 The goal was to explore how AI-related discourse varies across online communities -- which topics dominate, where communities converge on shared concerns, and where they diverge into distinct thematic niches. We used Google's Gemma embedding model to capture semantic meaning, HDBSCAN for density-based clustering in reduced-dimension space, and BERTopic to extract interpretable topics at both the cluster and subreddit level. The result is an interactive 3D map of Reddit's AI conversation landscape, along with cross-community analysis identifying "bridge topics" that span multiple communities.
 
@@ -46,7 +46,7 @@ flowchart LR
 
 ### 1. Data Collection and Ingestion
 
-We sourced Reddit data from [Arctic Shift](https://github.com/ArcticalShift/arctic-shift), a publicly available archive of Reddit posts and comments stored as newline-delimited JSON in `.zst` compressed files. Our ingestion pipeline reads these archives directly into **DuckDB** (an in-process analytical database), filtering to a curated list of subreddits and applying deduplication via unique indexes. DuckDB's ability to query compressed JSON natively and its columnar storage made it well-suited for this scale of data.
+We sourced Reddit data from [Arctic Shift](https://github.com/ArthurHeitmann/arctic_shift), a publicly available archive of Reddit posts and comments stored as newline-delimited JSON in `.zst` compressed files. Our ingestion pipeline reads these archives directly into **DuckDB** (an in-process analytical database), filtering to a curated list of subreddits and applying deduplication via unique indexes. DuckDB's ability to query compressed JSON natively and its columnar storage made it well-suited for this scale of data.
 
 ### 2. Keyword Filtering
 
@@ -141,6 +141,7 @@ We computed topic centroids (mean Gemma embeddings per topic, L2-normalized) and
 ```
 reddit-ai-analysis-showcase/
 ├── README.md
+├── LICENSE
 ├── requirements.txt
 ├── config.template.yaml
 ├── assets/
@@ -176,7 +177,7 @@ reddit-ai-analysis-showcase/
 
 ### 1. Get the Data
 
-Download Reddit dumps from [Arctic Shift](https://github.com/ArcticalShift/arctic-shift). We used the July 2025 monthly archives (`RC_2025-07.zst` for comments, `RS_2025-07.zst` for posts).
+Download Reddit dumps from [Arctic Shift](https://github.com/ArthurHeitmann/arctic_shift). We used the July 2025 monthly archives (`RC_2025-07.zst` for comments, `RS_2025-07.zst` for posts).
 
 ### 2. Configure
 
@@ -232,9 +233,9 @@ A CUDA-capable GPU is recommended for the embedding generation stage (Step 07) b
 
 ## Data Attribution
 
-Reddit data sourced from [Arctic Shift](https://github.com/ArcticalShift/arctic-shift), a community-maintained archive of public Reddit data.
+Reddit data sourced from [Arctic Shift](https://github.com/ArthurHeitmann/arctic_shift), a community-maintained archive of public Reddit data.
 
 ## License
 
-This project is shared for educational and portfolio purposes. The analysis pipeline is original work; the underlying Reddit data is subject to Reddit's terms of service and Arctic Shift's data policies.
+This project is released under the [MIT License](LICENSE). The analysis pipeline is original work; the underlying Reddit data is subject to Reddit's terms of service and Arctic Shift's data policies.
 
